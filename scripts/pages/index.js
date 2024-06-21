@@ -17,10 +17,10 @@
             const dataElement = document.createElement("article");
     
             const imageElement = document.createElement("img");
-            imageElement.src = photographer.image;
+            imageElement.src = photographer.portrait;
             imageElement.alt = photographer.name;
             const nomElement = document.createElement("h2");
-            nomElement.innerText = photographer.nom;
+            nomElement.innerText = photographer.name;
             const idElement = document.createElement("p");
             idElement.innerText = photographer.id;
             const cityElement = document.createElement("p");
