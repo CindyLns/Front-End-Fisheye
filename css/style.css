@@ -31,6 +31,11 @@ h1 {
     margin: 100px 0;
 }
 
+.photographer_section a {
+    text-decoration: none;
+    color: black;
+}
+
 .photographer_section article {
     justify-self: center;
     display: flex;

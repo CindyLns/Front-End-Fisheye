@@ -10,8 +10,11 @@
         const photographersSection = document.querySelector(".photographer_section");
 
         photographers.forEach((photographer) => {
+            const linkElement = document.createElement("a");
+            linkElement.href = `photographer.html?id=${photographer.id}`;
+
             const dataElement = document.createElement("article");
-    
+            
             const imageElement = document.createElement("img");
             imageElement.src = photographer.portrait;
             imageElement.alt = photographer.name;
@@ -30,8 +33,9 @@
             priceElement.innerText = `${photographer.price} €/jour`;
             priceElement.classList.add("price");
 
-            photographersSection.appendChild(dataElement);
+            photographersSection.appendChild(linkElement);
 
+            linkElement.appendChild(dataElement);   
             dataElement.appendChild(imageElement);
             dataElement.appendChild(nomElement);
             dataElement.appendChild(placeElement);
