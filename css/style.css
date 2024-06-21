@@ -42,9 +42,31 @@ h1 {
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    margin: 15px 0 0;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    object-fit: cover;
+}
+.photographer_section article div {
+    display: flex;
+}
+.photographer_section article p {
+    font-size: 0.625em;
+    margin: 1px;
+}
+.photographer_section article .place {
+    font-size: 0.813em;
+    color: #901C1C;
+}
+.photographer_section article .price {
+    font-size: 0.563em;
+    color:#757575;
 }
