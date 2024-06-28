@@ -37,7 +37,8 @@ function photographerTemplate(data) {
         dataElement.appendChild(priceElement);
 
         return linkElement;
+        
     }
 
-    return { name, picture, getUserCardDOM }
+    return { getUserCardDOM }
 }

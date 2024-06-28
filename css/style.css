@@ -59,6 +59,7 @@ h1 {
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     object-fit: cover;
+    overflow-clip-margin: unset;
 }
 .photographer_section article div {
     display: flex;

@@ -1,3 +1,8 @@
+body {
+    font-family: "DM Sans", sans-serif;
+    margin: 0;
+}
+
 #contact_modal {
     display: none;
 }
@@ -6,6 +11,43 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.photograph-header article img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    object-fit: cover;
+    overflow-clip-margin: unset;
+}
+
+.photograph-header article h2 {
+    color: #D3573C;
+    font-size: 64px;
+    margin: 15px 0 0;
+}
+
+.photograph-header article div {
+    display: flex;
+}
+.photograph-header article p {
+    font-size: 1.125em;
+    margin: 1px;
+}
+.photograph-header article .place {
+    font-size: 1.5em;
+    color: #901C1C;
+}
+.photograph-header article .price {
+    font-size: 0.563em;
+    color:#757575;
 }
 
 .contact_button {
