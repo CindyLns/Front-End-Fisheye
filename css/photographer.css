@@ -7,6 +7,18 @@ body {
     display: none;
 }
 
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 90px;
+}
+
+.logo {
+    height: 50px;
+    margin-left: 100px;
+}
+
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
@@ -16,7 +28,7 @@ body {
     justify-content: space-between;
 }
 
-.photograph-header article img {
+.photograph-header img {
     height: 200px;
     width: 200px;
     border-radius: 50%;
@@ -36,6 +48,7 @@ body {
 
 .photograph-header article div {
     display: flex;
+    margin-bottom: 20px;
 }
 .photograph-header article p {
     font-size: 1.125em;
@@ -48,6 +61,37 @@ body {
 .photograph-header article .price {
     font-size: 0.563em;
     color:#757575;
+}
+
+.gallery_media{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin: 100px 0;
+    justify-items: center;
+}
+
+.gallery_media img,
+.gallery_media video  {
+    width: 350px;
+    height: 351px;
+    object-fit: cover;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.gallery_media .info_media {
+    display: flex;
+    justify-content: space-between;
+}
+.gallery_media p {
+    font-size: 1.5em;
+    line-height: 31.25px;
+    color: #901C1C;
+    margin: 10px 0;
 }
 
 .contact_button {

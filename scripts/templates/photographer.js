@@ -39,6 +39,37 @@ function photographerTemplate(data) {
         return linkElement;
         
     }
+    function getDetailCardDOM() {
+        const photographElement = document.createElement("article");
+        const nameElement = document.createElement("h2");
+        nameElement.innerText = name;
+        const lieuElement = document.createElement("div");
+        const villeElement = document.createElement("p");
+        villeElement.innerText = `${city},`;
+        villeElement.classList.add("place");
+        const paysElement = document.createElement("p");
+        paysElement.innerText = country;
+        paysElement.classList.add("place");
+        const phraseElement = document.createElement("p");
+        phraseElement.innerText = tagline;
 
-    return { getUserCardDOM }
+        const photoElement = document.createElement("img");
+        photoElement.src = picture;
+        photoElement.alt = name;
+
+        const prixElement = document.createElement("p");
+        prixElement.innerText = `${price} €/jour`;
+        prixElement.classList.add("price");
+
+        photographElement.appendChild(nameElement);
+        photographElement.appendChild(lieuElement);
+        lieuElement.appendChild(villeElement);
+        lieuElement.appendChild(paysElement);
+        photographElement.appendChild(phraseElement);
+        
+        return photographElement;
+
+    }
+
+    return { getUserCardDOM, getDetailCardDOM }
 }
