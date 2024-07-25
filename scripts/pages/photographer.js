@@ -13,8 +13,15 @@ function getPhotographerIdFromURL() {
 async function displayData(photographer) {
     const photographersSection = document.querySelector(".photograph-header");
     const photographerModel = photographerTemplate(photographer);
-    const detailCardDOM = photographerModel.getDetailCardDOM();
-    photographersSection.appendChild(detailCardDOM);
+    const { photographElement, photoElement } = photographerModel.getDetailCardDOM();
+    photographersSection.appendChild(photographElement);
+    photographersSection.appendChild(photoElement);
+    const photographersText = document.querySelector(".static_text");
+    const { prixElement } = photographerModel.getDetailCardDOM();
+    photographersText.appendChild(prixElement);
+    const photographersName = document.querySelector(".header_modal");
+    const { nameElement } = photographerModel.getDetailCardDOM();
+    photographersName.appendChild(nameElement);
 }
 
 async function init() {

@@ -20,15 +20,53 @@
     </main>
     <div id="contact_modal">
 			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+				<header class="header_modal">
+          <div class="title_modal">
+            <h2>Contactez-moi</h2>
+            <img src="assets/icons/close.svg" onclick="closeModal()" />
+          </div>
         </header>
 				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
+					<div
+            class="modalData">
+						<label>Prénom</label><br>
+						<input
+              class="modal-input"
+              type="text"
+              id="first"
+              name="first"
+            /><br>
 					</div>
+          <div
+            class="modalData">
+            <label>Nom</label><br>
+            <input
+              class="modal-input"
+              type="text"
+              id="last"
+              name="last"
+            /><br>
+          </div>
+          <div
+            class="modalData">
+            <label>E-mail</label><br>
+            <input
+              class="modal-input"
+              type="email"
+              id="email"
+              name="email"
+            /><br>
+          </div>
+          <div
+            class="modalData">
+            <label>Votre message</label><br>
+            <input
+              class="modal-message"
+              type="textarea"
+              id="message"
+              name="message"
+            /><br>
+          </div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>

@@ -67,7 +67,7 @@ function photographerTemplate(data) {
         lieuElement.appendChild(paysElement);
         photographElement.appendChild(phraseElement);
         
-        return photographElement;
+        return { photographElement, photoElement, prixElement, nameElement };
 
     }
 

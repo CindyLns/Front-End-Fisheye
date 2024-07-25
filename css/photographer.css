@@ -62,7 +62,17 @@ header {
     font-size: 0.563em;
     color:#757575;
 }
+.photograph-header button.contact_button {
+    order: 2; 
+}
 
+.photograph-header article {
+    order: 1;
+}
+
+.photograph-header img {
+    order: 3;
+}
 .gallery_media{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -107,6 +117,16 @@ header {
     cursor: pointer;
 }
 
+#contact_modal{
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -116,22 +136,29 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 35px;
-    margin: auto;
+    margin: 5% auto;
 }
 
-.modal header {
+.modal .header_modal {
+    width: 100%;
+    margin-bottom: 26px;
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+}
+.modal .title_modal {
+    display: flex;
     justify-content: space-between;
     width: 100%;
 }
-
-.modal header img {
+.modal .header_modal img {
     cursor: pointer;
 }
 
-.modal header h2 {
+.modal .header_modal h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
+    margin: 0;
 }
 
 form {
@@ -151,7 +178,6 @@ form div {
     flex-direction: column;
     width: 100%;
     align-items: self-start;
-    margin-bottom: 26px;
 }
 
 form input {
@@ -159,4 +185,25 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+.modal-message {
+    height: 170px;
+}
+
+.static_text {
+    width: 376px;
+    background-color: #DB8875;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    margin-right: 36px;
+}
+.static_text p{
+    font-size: 1.5em;
+    font-weight: 500;
+    padding: 0 16px;
+    text-align: right;
 }
