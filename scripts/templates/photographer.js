@@ -1,5 +1,5 @@
 function photographerTemplate(data) {
-    const { name, portrait, id, city, country, tagline, price } = data;
+    const { name, portrait, id, city, country, tagline, price, likes } = data;
 
     const picture = `${portrait}`;
 
@@ -61,6 +61,8 @@ function photographerTemplate(data) {
         prixElement.innerText = `${price} €/jour`;
         prixElement.classList.add("price");
 
+        
+
         photographElement.appendChild(nameElement);
         photographElement.appendChild(lieuElement);
         lieuElement.appendChild(villeElement);
@@ -70,6 +72,7 @@ function photographerTemplate(data) {
         return { photographElement, photoElement, prixElement, nameElement };
 
     }
+
 
     return { getUserCardDOM, getDetailCardDOM }
 }

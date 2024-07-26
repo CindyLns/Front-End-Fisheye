@@ -33,6 +33,9 @@ async function init() {
 
     displayData(photographer);
     showMedia(mediaList);
+
+    const totalLikes = calculateTotalLikes(mediaList);
+    displayTotalLikes(totalLikes);
 }
 
 init();
@@ -55,6 +58,7 @@ function videoElement(src, alt) {
       const media = new Media(mediaData);
   
       const mediaCard = document.createElement('div');
+      mediaCard.classList.add("image_media");
 
       if (mediaData.image) {
         const image = document.createElement('img');
@@ -72,16 +76,37 @@ function videoElement(src, alt) {
         info.classList.add("info_media");
         const title = document.createElement ('p');
         title.innerText = media.title;
+        const likesContent = document.createElement("div");
+        likesContent.classList.add("likes_content");
         const likes = document.createElement ('p');
+        likes.classList.add("likes_picture");
         likes.innerText = media.likes;
 
         mediaCard.appendChild(info);
         info.appendChild(title);
-        info.appendChild(likes);
+        info.appendChild(likesContent);
+        likesContent.appendChild(likes);
 
 
       // Render the media card
       photoGrid.appendChild(mediaCard);
     });
   }
-  
+
+  function calculateTotalLikes(mediaList) {
+    return mediaList.reduce((total, media) => total + media.likes, 0);
+}
+
+function displayTotalLikes(totalLikes) {
+  const photographersText = document.querySelector(".static_text");
+  const likesContainer = document.createElement("div");
+  likesContainer.classList.add("total-likes-container");
+  const likesNumber = document.createElement("p");
+  likesNumber.innerText = `${totalLikes}`;
+  const likesIcon = document.createElement("img");
+  likesIcon.src =  "assets/images/coeur.png";
+  likesIcon.alt =  "icone coeur";
+  photographersText.appendChild(likesContainer);
+  likesContainer.appendChild(likesNumber)
+  likesContainer.appendChild(likesIcon)
+}

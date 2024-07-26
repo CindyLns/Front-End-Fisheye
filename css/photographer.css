@@ -80,6 +80,9 @@ header {
     margin: 100px 0;
     justify-items: center;
 }
+.image_media {
+    width: 350px;
+}
 
 .gallery_media img,
 .gallery_media video  {
@@ -102,6 +105,9 @@ header {
     line-height: 31.25px;
     color: #901C1C;
     margin: 10px 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .contact_button {
@@ -200,10 +206,23 @@ form input {
     bottom: 0;
     right: 0;
     margin-right: 36px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
 }
 .static_text p{
     font-size: 1.5em;
-    font-weight: 500;
+    font-weight: 600;
     padding: 0 16px;
-    text-align: right;
+}
+.total-likes-container {
+    display: flex;
+    align-items: center;
+}
+.total-likes-container p{
+    padding-right: 5px;
+}
+.total-likes-container img{
+    width: 21px;
+    height: 21px;
 }
