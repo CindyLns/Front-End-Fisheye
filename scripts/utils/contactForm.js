@@ -1,12 +1,17 @@
+// DOM Elements
+const modal = document.getElementById("contact_modal");
+const modalBtn = document.querySelector(".contact_button");
+const closeBtn = document.querySelector(".close_button");
+
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
 }
+modalBtn.addEventListener("click", displayModal);
 
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
 }
+closeBtn.addEventListener("click", closeModal);
 
 // Déclaration des variables pour stocker les données saisies
 let form = document.querySelector("form");

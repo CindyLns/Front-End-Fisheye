@@ -1,18 +1,17 @@
 // DOM Elements
-function initLightbox() {
 const lightbox = document.querySelector('.lightbox');
-const imageLightbox = document.querySelectorAll('.image_data');
 const imageViewContainer = document.querySelector('.img-view');
-const imageTitle = document.querySelectorAll('.title_media');
+const videoViewContainer = document.querySelector('.video-view');
 const titleLightbox = document.querySelector('.lightbox_img-title');
 const lightboxNext = document.querySelector('.lightbox_next');
 const lightboxPrev = document.querySelector('.lightbox_prev');
 const btnClose = document.querySelector(".lightbox_close");
 
-// launch modal form
+/* launch modal form
 imageLightbox.forEach((img, index) => {
   img.addEventListener("click", () => openModal(index));
-});
+});*/
+
 
 // Variable pour suivre l'image actuelle
 let currentIndex = 0;
@@ -20,14 +19,30 @@ let currentIndex = 0;
 // Fonction pour ouvrir la modal
 function openModal(index) {
   currentIndex = index;
+  const mediaLightbox = document.querySelectorAll('.image_data');
+  const mediaTitle = document.querySelectorAll('.title_media');
   lightbox.style.display = "block";
 
-  const imageSrc = imageLightbox[index].src;
-  imageViewContainer.src = imageSrc;
+  const mediaElement = mediaLightbox[index];
+  const mediaType = mediaElement.tagName.toLowerCase();
+
+  if (mediaType === 'img') {
+    const imageSrc = mediaElement.src;
+    imageViewContainer.style.display = "block";
+    videoViewContainer.style.display = "none";
+    imageViewContainer.src = imageSrc;
+  } else if (mediaType === 'video') {
+    const videoSrc = mediaElement.src;
+    videoViewContainer.style.display = "block";
+    imageViewContainer.style.display = "none";
+    videoViewContainer.src = videoSrc;
+    videoViewContainer.type = 'video/mp4';
+    videoViewContainer.controls = true
+  }
 
 
-  if (imageTitle[index]) {
-    titleLightbox.textContent = imageTitle[index].textContent;
+  if (mediaTitle[index]) {
+    titleLightbox.textContent = mediaTitle[index].textContent;
   }
 }
 
@@ -36,22 +51,38 @@ function closeModal() {
 }
 
 function plusSlides(n) {
+  const mediaLightbox = document.querySelectorAll('.image_data');
+  const mediaTitle = document.querySelectorAll('.title_media');
   currentIndex += n;
 
   // Si on dépasse la dernière image, revenir à la première
-  if (currentIndex >= imageLightbox.length) {
+  if (currentIndex >= mediaLightbox.length) {
     currentIndex = 0;
   }
 
   // Si on est avant la première image, aller à la dernière
   if (currentIndex < 0) {
-    currentIndex = imageLightbox.length - 1;
+    currentIndex = mediaLightbox.length - 1;
   }
-  const imageSrc = imageLightbox[currentIndex].src;
-  imageViewContainer.src = imageSrc;
+  const mediaElement = mediaLightbox[currentIndex];
+  const mediaType = mediaElement.tagName.toLowerCase();
 
-  if (imageTitle[currentIndex]) {
-    titleLightbox.textContent = imageTitle[currentIndex].textContent;
+  if (mediaType === 'img') {
+    const imageSrc = mediaElement.src;
+    imageViewContainer.style.display = "block";
+    videoViewContainer.style.display = "none";
+    imageViewContainer.src = imageSrc;
+  } else if (mediaType === 'video') {
+    const videoSrc = mediaElement.src;
+    videoViewContainer.style.display = "block";
+    imageViewContainer.style.display = "none";
+    videoViewContainer.src = videoSrc;
+    videoViewContainer.type = 'video/mp4';
+    videoViewContainer.controls = true;
+  }
+
+  if (mediaTitle[currentIndex]) {
+    titleLightbox.textContent = mediaTitle[currentIndex].textContent;
   }
 }
 
@@ -64,4 +95,3 @@ lightboxPrev.addEventListener("click", () => plusSlides(-1));
 btnClose.addEventListener("click", closeModal);
 
 
-}
