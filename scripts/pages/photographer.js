@@ -33,7 +33,7 @@ async function init() {
 
     displayData(photographer);
     showMedia(mediaList);
-
+    initLightbox();
     const totalLikes = calculateTotalLikes(mediaList);
     displayTotalLikes(totalLikes);
 }
@@ -62,6 +62,7 @@ function videoElement(src, alt) {
 
       if (mediaData.image) {
         const image = document.createElement('img');
+        image.classList.add("image_data");
         image.src = media.image;
         image.alt = media.title;
         mediaCard.appendChild(image);
@@ -75,6 +76,7 @@ function videoElement(src, alt) {
         const info = document.createElement("div");
         info.classList.add("info_media");
         const title = document.createElement ('p');
+        title.classList.add("title_media")
         title.innerText = media.title;
         const likesContent = document.createElement("div");
         likesContent.classList.add("likes_content");
@@ -86,7 +88,10 @@ function videoElement(src, alt) {
         info.appendChild(title);
         info.appendChild(likesContent);
         likesContent.appendChild(likes);
+        const likesHeart = heartIcon();
+        likesContent.appendChild(likesHeart);
 
+        likesHeart.addEventListener('click', () => addLike(mediaData, likes, mediaList));
 
       // Render the media card
       photoGrid.appendChild(mediaCard);
@@ -104,9 +109,42 @@ function displayTotalLikes(totalLikes) {
   const likesNumber = document.createElement("p");
   likesNumber.innerText = `${totalLikes}`;
   const likesIcon = document.createElement("img");
-  likesIcon.src =  "assets/images/coeur.png";
+  likesIcon.src =  "assets/images/coeur.svg";
   likesIcon.alt =  "icone coeur";
   photographersText.appendChild(likesContainer);
   likesContainer.appendChild(likesNumber)
   likesContainer.appendChild(likesIcon)
+}
+
+const sessionLikes = {};
+
+function addLike(mediaData, likesElement, mediaList) {
+    if (!sessionLikes[mediaData.id]) {
+        sessionLikes[mediaData.id] = true;
+
+        mediaData.likes += 1;
+        likesElement.innerText = mediaData.likes;
+
+        const totalLikesElement = document.querySelector('.total-likes-container p');
+        const newTotalLikes = calculateTotalLikes(mediaList);
+        totalLikesElement.innerText = newTotalLikes;
+    } 
+}
+
+function heartIcon(){
+
+  const heart = document.createElementNS("http://www.w3.org/2000/svg",'svg');
+  heart.setAttribute('width', '21');
+  heart.setAttribute('height', '21');
+  heart.setAttribute('viewBox', '0 0 48 48')
+  const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  g.setAttribute('id', 'Line');
+  const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  path.setAttribute('d', 'm34.39 5a11.52 11.52 0 0 0 -8.2 3.4l-2.19 2.19-2.19-2.19a11.6 11.6 0 0 0 -19.81 8.21 17 17 0 0 0 6 13l15.35 13.15a1 1 0 0 0 1.3 0l15.35-13.19a17 17 0 0 0 6-13 11.63 11.63 0 0 0 -11.61-11.57z');
+  path.setAttribute('fill', '#901C1C');
+  g.appendChild(path);
+  heart.appendChild(g);
+
+  return heart;
+
 }

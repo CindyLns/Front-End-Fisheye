@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Fisheye - photographe </title>
   </head>
   <body>
@@ -72,10 +73,21 @@
 			</div>
 		</div>
     <div class="lightbox">
-      <button class="lightbox_close"></button>
-      <button class="lightbox_next"></button>
-      <button class="lightbox_prev"></button>
-      <div class="lightbox-container"></div>
+      <div class="lightbox-container">
+        <button class="lightbox_close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <button class="lightbox_prev">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="lightbox_next">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <div class="img-container">
+          <img class="img-view" src="" alt="">
+        </div>
+        <div class="lightbox_img-title"></div>
+      </div>
     </div>
     
     <script src="scripts/templates/photographer.js"></script>
