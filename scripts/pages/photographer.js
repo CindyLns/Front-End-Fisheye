@@ -64,16 +64,20 @@ function videoElement(src, alt) {
       if (mediaData.image) {
         const image = document.createElement('img');
         image.classList.add("image_data");
+        image.setAttribute('tabindex', '0');
         image.src = media.image;
         image.alt = media.title;
         image.addEventListener("click", () => openModal(index));
+        image.addEventListener("keypress", () => openModal(index));
         mediaCard.appendChild(image);
 
       } else if (mediaData.video) {
         // Create the video element
         const video = videoElement(media.video, media.title);
         video.classList.add("image_data");
+        video.setAttribute('tabindex', '0');
         video.addEventListener("click", () => openModal(index));
+        video.addEventListener("keypress", () => openModal(index));
         mediaCard.appendChild(video);
       }
 
@@ -96,6 +100,7 @@ function videoElement(src, alt) {
         likesContent.appendChild(likesHeart);
 
         likesHeart.addEventListener('click', () => addLike(mediaData, likes, mediaList));
+        likesHeart.addEventListener("keypress", () => addLike(mediaData, likes, mediaList));
 
       // Render the media card
       photoGrid.appendChild(mediaCard);
@@ -135,12 +140,26 @@ function addLike(mediaData, likesElement, mediaList) {
     } 
 }
 
-function heartIcon(){
-
-  const heart = document.createElementNS("http://www.w3.org/2000/svg",'svg');
+function heartIcon() {
+  const heart = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
   heart.setAttribute('width', '21');
   heart.setAttribute('height', '21');
-  heart.setAttribute('viewBox', '0 0 48 48')
+  heart.setAttribute('viewBox', '0 0 48 48');
+  heart.setAttribute('role', 'img');
+  heart.setAttribute('aria-describedby', 'titre description');
+  heart.setAttribute('tabindex', '0');
+
+  const title = document.createElementNS("http://www.w3.org/2000/svg", 'title');
+  title.setAttribute('id', 'titre');
+  title.textContent = 'Cœur';
+
+  const desc = document.createElementNS("http://www.w3.org/2000/svg", 'desc');
+  desc.setAttribute('id', 'description');
+  desc.textContent = 'Icône représentant un cœur';
+
+  heart.appendChild(title);
+  heart.appendChild(desc);
+
   const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
   g.setAttribute('id', 'Line');
   const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -150,15 +169,20 @@ function heartIcon(){
   heart.appendChild(g);
 
   return heart;
-
 }
+
+//Filtres
+const chevron = document.getElementById("chevron-dropdown")
 
 const boutonPop = document.querySelector(".btn-pop");
 boutonPop.addEventListener("click", function () {
-  mediaList.sort(function (a, b) {
+  if (chevron.classList.contains("turn")) {
+    mediaList.sort(function (a, b) {
       return b.likes - a.likes;
     });
     showMedia(mediaList);
+  } 
+ 
 });
 
 const boutonTitre = document.querySelector(".btn-titre");
@@ -167,6 +191,7 @@ boutonTitre.addEventListener("click", function () {
       return  a.title.localeCompare(b.title);
     });
     showMedia(mediaList);
+    updateButtonText("Titre");
 });
 
 const boutonDate = document.querySelector(".btn-date");
@@ -175,18 +200,15 @@ boutonDate.addEventListener("click", function () {
     return new Date(b.date) - new Date(a.date);
     });
     showMedia(mediaList);
+    updateButtonText("Date");
 });
 
 const dropdownBtn = document.querySelector(".dropdown_btn");
-const dateBtn = document.querySelector(".btn-date");
-const titreBtn = document.querySelector(".btn-titre");
 const borderWhite = document.querySelectorAll(".border_white");
-const chevron = document.getElementById("chevron-dropdown")
-
 
 function showDropdown(){
-  dateBtn.classList.toggle("active");
-  titreBtn.classList.toggle("active");
+  boutonDate.classList.toggle("active");
+  boutonTitre.classList.toggle("active");
   chevron.classList.toggle("turn");
 
   borderWhite.forEach(function(element) {
@@ -199,5 +221,11 @@ dropdownBtn.addEventListener("click", function (e) {
   e.stopPropagation();
   showDropdown();
 });
+
+function updateButtonText(newText) {
+  boutonPop.innerHTML = newText + '<i id="chevron-dropdown" class="fa-solid fa-chevron-down" aria-hidden="true"></i>';
+}
+
+
 
 

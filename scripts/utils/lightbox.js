@@ -28,16 +28,18 @@ function openModal(index) {
 
   if (mediaType === 'img') {
     const imageSrc = mediaElement.src;
+    const imageAlt = mediaTitle[index].textContent;
     imageViewContainer.style.display = "block";
     videoViewContainer.style.display = "none";
     imageViewContainer.src = imageSrc;
+    imageViewContainer.alt = imageAlt;
   } else if (mediaType === 'video') {
     const videoSrc = mediaElement.src;
     videoViewContainer.style.display = "block";
     imageViewContainer.style.display = "none";
     videoViewContainer.src = videoSrc;
     videoViewContainer.type = 'video/mp4';
-    videoViewContainer.controls = true
+    videoViewContainer.controls = true;
   }
 
 
@@ -69,9 +71,11 @@ function plusSlides(n) {
 
   if (mediaType === 'img') {
     const imageSrc = mediaElement.src;
+    const imageAlt = mediaTitle[currentIndex].textContent;
     imageViewContainer.style.display = "block";
     videoViewContainer.style.display = "none";
     imageViewContainer.src = imageSrc;
+    imageViewContainer.alt = imageAlt;
   } else if (mediaType === 'video') {
     const videoSrc = mediaElement.src;
     videoViewContainer.style.display = "block";
@@ -79,6 +83,7 @@ function plusSlides(n) {
     videoViewContainer.src = videoSrc;
     videoViewContainer.type = 'video/mp4';
     videoViewContainer.controls = true;
+
   }
 
   if (mediaTitle[currentIndex]) {

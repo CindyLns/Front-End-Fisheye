@@ -10,7 +10,9 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html">
+        <img src="assets/images/logo.png" class="logo" alt="fisheye logo"/>
+      </a>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -18,9 +20,9 @@
       </div>
       <section class="filtre">
         <p>Trier par</p>
-        <div class="dropdown_btn">
+        <div class="dropdown_btn" aria-label="Ouvrir le menu déroulant">
           <button class="btn-pop">Popularité
-            <i id="chevron-dropdown" class="fa-solid fa-chevron-down"></i>
+            <i id="chevron-dropdown" class="fa-solid fa-chevron-down" aria-hidden="true"></i>
           </button>
           <hr class="border_white">
           <button class="btn-date">Date</button>
@@ -36,13 +38,15 @@
 				<header class="header_modal">
           <div class="title_modal">
             <h2>Contactez-moi</h2>
-            <img src="assets/icons/close.svg" class="close_button" />
+            <button aria-label="Fermer le formulaire de contact" class="close_button">
+              <img src="assets/icons/close.svg" alt="icone en forme de croix pour fermer le formulaire de contact"/>
+            </button>
           </div>
         </header>
-				<form>
+				<form method="dialog" role="form">
 					<div
             class="modalData">
-						<label>Prénom</label><br>
+						<label for="first">Prénom</label><br>
 						<input
               class="modal-input"
               type="text"
@@ -52,7 +56,7 @@
 					</div>
           <div
             class="modalData">
-            <label>Nom</label><br>
+            <label for="last">Nom</label><br>
             <input
               class="modal-input"
               type="text"
@@ -62,7 +66,7 @@
           </div>
           <div
             class="modalData">
-            <label>E-mail</label><br>
+            <label for="email">E-mail</label><br>
             <input
               class="modal-input"
               type="email"
@@ -72,7 +76,7 @@
           </div>
           <div
             class="modalData">
-            <label>Votre message</label><br>
+            <label for="message">Votre message</label><br>
             <input
               class="modal-message"
               type="textarea"
@@ -80,20 +84,20 @@
               name="message"
             /><br>
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button type="submit" class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <div class="lightbox">
+    <div class="lightbox" aria-label="Carrousel des photos du photographe" role="dialog">
       <div class="lightbox-container">
-        <button class="lightbox_close">
-          <i class="fa-solid fa-xmark"></i>
+        <button class="lightbox_close" aria-label="Fermer le carrousel de photos">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
-        <button class="lightbox_prev">
-          <i class="fa-solid fa-chevron-left"></i>
+        <button class="lightbox_prev" aria-label="Bouton pour passer à l'image précédente">
+          <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
         </button>
-        <button class="lightbox_next">
-          <i class="fa-solid fa-chevron-right"></i>
+        <button class="lightbox_next" aria-label="Bouton pour passer à l'image suivante">
+          <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
         </button>
         <div class="media-container">
           <img class="img-view" src="" alt="">
