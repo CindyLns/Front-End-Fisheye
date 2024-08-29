@@ -176,13 +176,11 @@ const chevron = document.getElementById("chevron-dropdown")
 
 const boutonPop = document.querySelector(".btn-pop");
 boutonPop.addEventListener("click", function () {
-  if (chevron.classList.contains("turn")) {
     mediaList.sort(function (a, b) {
       return b.likes - a.likes;
     });
     showMedia(mediaList);
-  } 
- 
+    updateButtonText("Popularité");
 });
 
 const boutonTitre = document.querySelector(".btn-titre");
@@ -204,9 +202,11 @@ boutonDate.addEventListener("click", function () {
 });
 
 const dropdownBtn = document.querySelector(".dropdown_btn");
+const selectedText = document.querySelector(".selected-text");
 const borderWhite = document.querySelectorAll(".border_white");
 
 function showDropdown(){
+  boutonPop.classList.toggle("active");
   boutonDate.classList.toggle("active");
   boutonTitre.classList.toggle("active");
   chevron.classList.toggle("turn");
@@ -222,8 +222,13 @@ dropdownBtn.addEventListener("click", function (e) {
   showDropdown();
 });
 
+dropdownBtn.addEventListener("keypress", function (e) {
+  e.stopPropagation();
+  showDropdown();
+});
+
 function updateButtonText(newText) {
-  boutonPop.innerHTML = newText + '<i id="chevron-dropdown" class="fa-solid fa-chevron-down" aria-hidden="true"></i>';
+  selectedText.innerHTML = newText;
 }
 
 
