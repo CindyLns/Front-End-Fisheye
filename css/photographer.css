@@ -167,7 +167,8 @@ header {
     cursor: pointer;
 }
 
-.modal .header_modal h2 {
+.modal .header_modal h2,
+.modal .header_modal h1 {
     font-size: 64px;
     font-weight: normal;
     margin: 0;
