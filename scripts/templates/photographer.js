@@ -1,5 +1,5 @@
 function photographerTemplate(data) {
-    const { name, portrait, id, city, country, tagline, price, likes } = data;
+    const { name, portrait, id, city, country, tagline, price } = data;
 
     const picture = `${portrait}`;
 

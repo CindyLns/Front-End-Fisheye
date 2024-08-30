@@ -128,6 +128,11 @@ header {
     border-radius: 5px;
     cursor: pointer;
 }
+.contact_button:hover,
+.contact_button:focus{
+    background-color: #DB8876;
+    color: black;
+}
 
 #contact_modal{
   position: fixed;
