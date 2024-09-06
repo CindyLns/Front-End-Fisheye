@@ -7,12 +7,6 @@ const lightboxNext = document.querySelector('.lightbox_next');
 const lightboxPrev = document.querySelector('.lightbox_prev');
 const btnClose = document.querySelector(".lightbox_close");
 
-/* launch modal form
-imageLightbox.forEach((img, index) => {
-  img.addEventListener("click", () => openModal(index));
-});*/
-
-
 // Variable pour suivre l'image actuelle
 let currentIndex = 0;
 
@@ -48,10 +42,12 @@ function openModal(index) {
   }
 }
 
+// Fonction pour fermer la modal
 function closeModal() {
   lightbox.style.display = "none";
 }
 
+// Permet de naviguer entre les médias dans la lightbox en fonction de la direction donnée
 function plusSlides(n) {
   const mediaLightbox = document.querySelectorAll('.image_data');
   const mediaTitle = document.querySelectorAll('.title_media');
@@ -91,7 +87,7 @@ function plusSlides(n) {
   }
 }
 
-// boutons next et prev
+// boutons suivant et précédent
 lightboxNext.addEventListener("click", () => plusSlides(1));
 lightboxPrev.addEventListener("click", () => plusSlides(-1));
 

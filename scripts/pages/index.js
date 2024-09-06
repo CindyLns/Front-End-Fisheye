@@ -1,3 +1,4 @@
+    //Récupère les données des photographes et des médias depuis le fichier JSON
     async function getPhotographers() {
         const reponse = await fetch("data/photographers.json");
         const data = await reponse.json()
@@ -6,6 +7,7 @@
         return data;
     }
 
+    //Affiche les informations détaillées du photographe sur cette page
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
 

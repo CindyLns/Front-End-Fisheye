@@ -6,10 +6,12 @@ async function getPhotographers() {
    
     return data;
 }
+// Récupère l'ID du photographe à partir de l'URL
 function getPhotographerIdFromURL() {
     const params = new URLSearchParams(window.location.search);
     return params.get('id');
 }
+//Affiche les informations détaillées du photographe sur cette page
 async function displayData(photographer) {
     const photographersSection = document.querySelector(".photograph-header");
     const photographerModel = photographerTemplate(photographer);
@@ -26,6 +28,7 @@ async function displayData(photographer) {
 
 let mediaList = [];
 
+// Cette fonction asynchrone effectue plusieurs tâches pour préparer l'affichage des informations du photographe et de ses médias 
 async function init() {
     // Récupère les datas des photographes
     const { photographers, media } = await getPhotographers();
@@ -41,6 +44,7 @@ async function init() {
 
 init();
 
+// Création d'un élément vidéo avec ses attributs 
 function videoElement(src, alt) {
   const video = document.createElement('video');
   video.src = src;
@@ -49,7 +53,7 @@ function videoElement(src, alt) {
   video.controls = true;
   return video;
 }
-
+// Affiche la liste des médias dans la galerie
  function showMedia(mediaList) {
  
     const photoGrid = document.querySelector('.gallery_media');
@@ -62,6 +66,7 @@ function videoElement(src, alt) {
       mediaCard.classList.add("image_media");
 
       if (mediaData.image) {
+        // Création de l'élément image
         const image = document.createElement('img');
         image.classList.add("image_data");
         image.setAttribute('tabindex', '0');
@@ -72,7 +77,7 @@ function videoElement(src, alt) {
         mediaCard.appendChild(image);
 
       } else if (mediaData.video) {
-        // Create the video element
+        // Création de l'élément vidéo
         const video = videoElement(media.video, media.title);
         video.classList.add("image_data");
         video.setAttribute('tabindex', '0');
@@ -102,15 +107,17 @@ function videoElement(src, alt) {
         likesHeart.addEventListener('click', () => addLike(mediaData, likes, mediaList));
         likesHeart.addEventListener("keypress", () => addLike(mediaData, likes, mediaList));
 
-      // Render the media card
+      // Retourne la carte media
       photoGrid.appendChild(mediaCard);
     });
   }
 
-  function calculateTotalLikes(mediaList) {
-    return mediaList.reduce((total, media) => total + media.likes, 0);
+//Calcule du nombre total de likes
+function calculateTotalLikes(mediaList) {
+  return mediaList.reduce((total, media) => total + media.likes, 0);
 }
 
+//Affiche le nombre total de likes dans l'encart de bas de page
 function displayTotalLikes(totalLikes) {
   const photographersText = document.querySelector(".static_text");
   const likesContainer = document.createElement("div");
@@ -124,9 +131,10 @@ function displayTotalLikes(totalLikes) {
   likesContainer.appendChild(likesNumber)
   likesContainer.appendChild(likesIcon)
 }
-
+//Vérifie si le média a déjà été liké pendant cette session
 const sessionLikes = {};
 
+//Incrémente le nombre de likes si le media est liké
 function addLike(mediaData, likesElement, mediaList) {
     if (!sessionLikes[mediaData.id]) {
         sessionLikes[mediaData.id] = true;
@@ -140,6 +148,7 @@ function addLike(mediaData, likesElement, mediaList) {
     } 
 }
 
+//Création du SVG de l'icône coeur 
 function heartIcon() {
   const heart = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
   heart.setAttribute('width', '21');
@@ -174,6 +183,7 @@ function heartIcon() {
 //Filtres
 const chevron = document.getElementById("chevron-dropdown")
 
+//Gère le tri des médias en fonction du nombre de likes lors du clic sur le bouton de tri
 const boutonPop = document.querySelector(".btn-pop");
 boutonPop.addEventListener("click", function () {
     mediaList.sort(function (a, b) {
@@ -183,6 +193,7 @@ boutonPop.addEventListener("click", function () {
     updateButtonText("Popularité");
 });
 
+//Gère le tri des médias par ordre alphabétique lors du clic sur le bouton de tri
 const boutonTitre = document.querySelector(".btn-titre");
 boutonTitre.addEventListener("click", function () {
   mediaList.sort(function (a, b) {
@@ -192,6 +203,7 @@ boutonTitre.addEventListener("click", function () {
     updateButtonText("Titre");
 });
 
+//Gère le tri des médias par date lors du clic sur le bouton de tri
 const boutonDate = document.querySelector(".btn-date");
 boutonDate.addEventListener("click", function () {
   mediaList.sort(function (a, b) {
@@ -205,6 +217,7 @@ const dropdownBtn = document.querySelector(".dropdown_btn");
 const selectedText = document.querySelector(".selected-text");
 const borderWhite = document.querySelectorAll(".border_white");
 
+//Gère l'affichage du menu déroulant
 function showDropdown(){
   boutonPop.classList.toggle("active");
   boutonDate.classList.toggle("active");
@@ -227,6 +240,7 @@ dropdownBtn.addEventListener("keypress", function (e) {
   showDropdown();
 });
 
+//Met à jour le texte du bouton de tri
 function updateButtonText(newText) {
   selectedText.innerHTML = newText;
 }

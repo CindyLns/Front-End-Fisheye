@@ -3,6 +3,7 @@ function photographerTemplate(data) {
 
     const picture = `${portrait}`;
 
+    //Récupération des données des photographes pour la page d'accueil et création du lien avec l'ID du photographe
     function getUserCardDOM() {
         const linkElement = document.createElement("a");
         linkElement.href = `photographer.html?id=${id}`;
@@ -39,6 +40,7 @@ function photographerTemplate(data) {
         return linkElement;
         
     }
+    //Récupération des données des photographes pour la page photographer
     function getDetailCardDOM() {
         const photographElement = document.createElement("article");
         const nameElement = document.createElement("h1");
